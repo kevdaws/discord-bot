@@ -19,7 +19,7 @@ client.login(BOT_TOKEN);
 
 client.on('message', message => {
 	
-    if (message.channel.id === '781384872773812308') {
+    if (message.channel.id === process.env.BOT_CHANNEL) {
         if (message.content === 'sheesh' || message.content === "!sheesh") {
             message.channel.send('SHEEEEEEEEEEEEEEEEEEEEEEEEEEEESH');
         }
