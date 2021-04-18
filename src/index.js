@@ -17,9 +17,12 @@ client.once('ready', () => {
 const BOT_TOKEN = process.env.BOT_TOKEN;
 client.login(BOT_TOKEN);
 
+// get env variable for bot testing channel.
+const BOT_CHANNEL = process.env.BOT_CHANNEL;
+
 client.on('message', message => {
 	
-    if (message.channel.id === process.env.BOT_CHANNEL) {
+    if (message.channel.id === BOT_CHANNEL) {
         if (message.content === 'sheesh' || message.content === "!sheesh") {
             message.channel.send('SHEEEEEEEEEEEEEEEEEEEEEEEEEEEESH');
         }
