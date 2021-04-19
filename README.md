@@ -1,3 +1,5 @@
-# Discord Bot Testing
+# Giphy API Discord Bot
 
-- Bot Token stored in .env file.
+- !gif <tag> will send a gif with desired tag to discord channel.
+
+- Tokens for Dicord and Giphy stored in .env file.
