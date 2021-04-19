@@ -39,8 +39,15 @@ client.on('message', message => {
     
     // verifying message is within desired channel.
     if (message.channel.id === BOT_CHANNEL) {
-        if (temp.length >= 2 && temp[0] === '!gif') {
+        if (temp.length == 2 && temp[0] === '!gif') {
             getGif(message, temp);
+        }
+
+        if (temp.length == 3) {
+            for (i = 0; i == temp[2]; i++) {
+                getGif(message, temp);
+                i++;
+            }
         }
     }
 });   
