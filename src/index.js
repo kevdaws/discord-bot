@@ -33,12 +33,20 @@ const gif = async () => {
 
 client.on('message', message => {
     
+    // seperate the call and the tag.
+    if (message.content.length != 0) {
+        temp = message.content.split(" ");
+    }
+    
+    // verifying message is within desired channel.
     if (message.channel.id === BOT_CHANNEL) {
-        if (message.content === '!gif' || message.content === "!gif") {
+        
+        if (temp.length >= 2 && temp[0] === '!gif') {
+        
             const url = (`https://api.giphy.com/v1`);
-            const res = fetch(`${url}/gifs/random?api_key=${GIPHY_TOKEN}`)
+            const res = fetch(`${url}/gifs/random?api_key=${GIPHY_TOKEN}&tag=${temp[1]}`)
             .then(res => res.json())
-            .then(data => message.channel.send(data.data.image_url));
+            .then(data => message.channel.send(data.data.image_url)); 
         }
     }
 });   
