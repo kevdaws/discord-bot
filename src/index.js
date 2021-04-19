@@ -25,27 +25,20 @@ client.login(BOT_TOKEN);
 const BOT_CHANNEL = process.env.BOT_CHANNEL;
 
 const gif = async () => {
-    const url = (`https://api.giphy.com/v1/randomid?api_key=${GIPHY_TOKEN}`);
-    const response = await fetch(url);
-    const resJSON = await response.json();
-    //console.log(resJSON);
-    const random_id = resJSON.data.random_id;
-    console.log(`${url}/gifs/${random_id}`);
-    const image = await fetch(`${url}/gifs/${random_id}`);
-    const imageJSON = await image.json();
-    console.log(imageJSON);
+    const url = (`https://api.giphy.com/v1`);
+    const res = await fetch(`${url}/gifs/random?api_key=${GIPHY_TOKEN}`);
+    const resJSON = await res.json();
+    console.log(resJSON.data.image_url);
 }
-
-
-
-console.log("yo");
-gif();
 
 client.on('message', message => {
     
     if (message.channel.id === BOT_CHANNEL) {
         if (message.content === '!gif' || message.content === "!gif") {
-            gif();
+            const url = (`https://api.giphy.com/v1`);
+            const res = fetch(`${url}/gifs/random?api_key=${GIPHY_TOKEN}`)
+            .then(res => res.json())
+            .then(data => message.channel.send(data.data.image_url));
         }
     }
 });   
